@@ -3,13 +3,21 @@ package pageObjects;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.PageFactory;
+
+import managers.FileReaderManager;
 
 public class Operations {
-	
-final WebDriver driver;
-	
+
+	WebDriver driver;
+
 	public Operations(WebDriver driver) {
-		this.driver=driver;
+		this.driver = driver;
+		PageFactory.initElements(driver, this);
+	}
+
+	public void navigateTo_Operations() {
+		driver.get(FileReaderManager.getInstance().getApplicationUrl());
 	}
 	
 	
@@ -51,6 +59,9 @@ final WebDriver driver;
 		
 		By performDiagnosticsButton = By.xpath("//*[@id=\"params\"]/table[2]/tbody/tr[6]/td[2]/div/input");
 		
+		By res = By.className("res");
+		
+		
 		//remote start transaction 
 		
 		By connectorId2 = By.id("connectorId");
@@ -86,7 +97,8 @@ final WebDriver driver;
 		By CancelReservationButton = By.xpath("/html/body/div[1]/div[3]/div/div[1]/ul/li[11]/a");
 		By reservationId = By.id("reservationId");
 		By performReservationButton = By.xpath("//*[@id=\"params\"]/table[2]/tbody/tr[4]/td[2]/div");
-		                                      
+		By performCancelReservationButton = By.xpath("//*[@id=\"params\"]/table[2]/tbody/tr[2]/td[2]/div/input");                                     
+		
 		
 		
 		//Data Transfer 
@@ -247,7 +259,13 @@ final WebDriver driver;
 			return driver.findElement(performDiagnosticsButton);
 		}
 		
+		public WebElement Getres() {
+			return driver.findElement(res);
+		}
 		
+		public Boolean GetresExist(){
+			return !driver.findElements(res).isEmpty();
+		}
 		
 		// getters remote start transaction
 		
@@ -324,6 +342,9 @@ final WebDriver driver;
 			return driver.findElement(performReservationButton);
 		}
 		
+		public WebElement GetperformCancelReservationButton(){
+			return driver.findElement(performCancelReservationButton);
+		}
 		
 		
 		

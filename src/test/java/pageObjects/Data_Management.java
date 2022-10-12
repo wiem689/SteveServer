@@ -3,17 +3,24 @@ package pageObjects;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.PageFactory;
+
+import managers.FileReaderManager;
+import managers.PageObjectManager;
 
 public class Data_Management {
+	
+	WebDriver driver;
 
-	
-final WebDriver driver;
-	
 	public Data_Management(WebDriver driver) {
-		this.driver=driver;
+		this.driver = driver;
+		PageFactory.initElements(driver, this);
+	}
+
+	public void navigateTo_Data_Management() {
+		driver.get(FileReaderManager.getInstance().getApplicationUrl());
 	}
 	
-
 	By managementButton = By.xpath("/html/body/div[1]/div[2]/div/ul/li[2]/ul/li[1]/a");
 	
 	By managementButton1 = By.xpath("/html/body/div[1]/div[2]/div/ul/li[2]/a");
@@ -49,7 +56,7 @@ final WebDriver driver;
 	
 	By redSubmitButton= By.className("redSubmit");
 	
-	
+	By selectChargeBoxId = By.xpath("//*[@id=\"overview\"]/table/tbody/tr[4]/td[1]/a");
 		
 		
 	
@@ -109,6 +116,8 @@ final WebDriver driver;
 				By ChargingProfilesGetButton = By.xpath("//*[@id=\"add_space\"]/input");
 				
 				
+				
+				
 				// add new charging profile 
 				
 				By durationInSecondsId = By.id("durationInSeconds");
@@ -150,6 +159,11 @@ final WebDriver driver;
 		
 	//getters charge points 
 	
+
+
+
+
+
 	public WebElement GetchargeBoxId(){
 		return driver.findElement(chargeBoxId);
 	}
@@ -262,6 +276,12 @@ final WebDriver driver;
 	public WebElement GetmanagementButton(){
 		return driver.findElement(managementButton);
 	}
+	
+	public WebElement GetselectChargeBoxId(){
+		return driver.findElement(selectChargeBoxId);
+	}
+	
+	
 	
 	
 	//getters Occp Tags

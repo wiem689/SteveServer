@@ -17,7 +17,7 @@ public class Settings {
 		PageFactory.initElements(driver, this);
 	}
 
-	public void navigateTo_HomePage() {
+	public void navigateTo_Settings() {
 		driver.get(FileReaderManager.getInstance().getApplicationUrl());
 	}
 	
